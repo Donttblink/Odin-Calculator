@@ -1,3 +1,5 @@
+
+
 const add = function (a, b) {
   return a + b;
 };
@@ -22,18 +24,4 @@ const nRoot = function (a, b) {
   }
 };
 
-const operate = function (num1, num2, operator) {
-  if (operator === "+") {
-    add(num1, num2);
-  } else if (operator === "-") {
-    subtract(num1, num2);
-  } else if (operator === "*") {
-    multiply(num1, num2);
-  } else if (operator === "/") {
-    divide(num1, num2);
-  } else if (operator === "^") {
-    power(num1, num2);
-  } else if (operator === '"\u221A"') {
-    nRoot(num1, num2);
-  }
-};
+
