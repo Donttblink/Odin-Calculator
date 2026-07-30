@@ -21,3 +21,19 @@ const nRoot = function (a, b) {
     return -((-a) ** (1 / b));
   }
 };
+
+const operate = function (num1, num2, operator) {
+  if (operator === "+") {
+    add(num1, num2);
+  } else if (operator === "-") {
+    subtract(num1, num2);
+  } else if (operator === "*") {
+    multiply(num1, num2);
+  } else if (operator === "/") {
+    divide(num1, num2);
+  } else if (operator === "^") {
+    power(num1, num2);
+  } else if (operator === '"\u221A"') {
+    nRoot(num1, num2);
+  }
+};
