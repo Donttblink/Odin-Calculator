@@ -47,8 +47,15 @@ let currentInput = "";
 numbers.forEach((button) => {
   button.addEventListener('click', () =>
   {
-     currentInput = button.textContent;
+    currentInput = button.textContent;
     display.textContent += currentInput;
 
   })
+});
+
+const clear = document.querySelector(".clear");
+
+clear.addEventListener('click', () => {
+  currentInput = "0";
+  display.textContent = currentInput;
 });
