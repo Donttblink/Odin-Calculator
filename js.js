@@ -37,5 +37,18 @@ const operate = function (num1, operator, num2) {
     return answer;
   }
 };
-const numbers = document.querySelectorAll('numpad-buttons');
-const display = document.querySelector('display');
+
+const numbers = document.querySelectorAll('.number');
+
+const display = document.querySelector('.display');
+
+let currentInput = "";
+
+numbers.forEach((button) => {
+  button.addEventListener('click', () =>
+  {
+     currentInput = button.textContent;
+    display.textContent += currentInput;
+
+  })
+});
