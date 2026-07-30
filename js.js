@@ -1,5 +1,3 @@
-
-
 const add = function (a, b) {
   return a + b;
 };
@@ -15,13 +13,23 @@ const divide = function (a, b) {
 const power = function (a, b) {
   return a ** b;
 };
-const nRoot = function (a, b) {
-  if (a >= 0) {
-    return a ** (1 / b);
-  }
-  if (b % 2 !== 0) {
-    return -((-a) ** (1 / b));
+
+const operate = function (num1, operator, num2) {
+  let answer;
+  if (operator === "+") {
+    answer = add(num1, num2);
+    return answer;
+  } else if (operator === "-") {
+    answer = subtract(num1, num2);
+    return answer;
+  } else if (operator === "*") {
+    answer = multiply(num1, num2);
+    return answer;
+  } else if (operator === "/") {
+    answer = divide(num1, num2);
+    return answer;
+  } else if (operator === "^") {
+    answer = power(num1, num2);
+    return answer;
   }
 };
-
-
