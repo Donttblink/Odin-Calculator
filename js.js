@@ -37,3 +37,5 @@ const operate = function (num1, operator, num2) {
     return answer;
   }
 };
+const numbers = document.querySelectorAll('numpad-buttons');
+const display = document.querySelector('display');
