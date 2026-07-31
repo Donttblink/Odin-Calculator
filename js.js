@@ -10,6 +10,7 @@ let num1;
 let num2;
 let operator;
 let shouldReset = true;
+let hasOperator = false;
 
 const add = function (a, b) {
   return a + b;
@@ -29,25 +30,14 @@ const power = function (a, b) {
 
 const operate = function (num1, operator, num2) {
   let answer;
-  if (operator === "+") {
-    answer = add(num1, num2);
-    return answer;
-  } else if (operator === "-") {
-    answer = subtract(num1, num2);
-    return answer;
-  } else if (operator === "*") {
-    answer = multiply(num1, num2);
-    return answer;
-  } else if (operator === "/") {
-    if (num2 === 0) {
-      return "Nice Try Einstein"
-    } else {
-    answer = divide(num1, num2);
-    return answer;}
-  } else if (operator === "^") {
-    answer = power(num1, num2);
-    return answer;
+  if (operator === "+") return add(num1, num2);
+  if (operator === "-") return subtract(num1, num2);
+  if (operator === "*") return multiply(num1, num2);
+  if (operator === "/") {
+    if (num2 === 0) return "Nice Try Einstein";
+    return divide(num1, num2);
   }
+  if (operator === "^") return power(num1, num2);
 };
 
 numbers.forEach((button) => {
@@ -69,12 +59,16 @@ clear.addEventListener("click", () => {
   shouldReset = true;
 });
 
-
-
-
 selectOperator.forEach((button) => {
   button.addEventListener("click", () => {
-    num1 = Number(display.textContent);
+    if (operator !== undefined && !shouldReset) {
+      num2 = Number(display.textContent);
+      const result = operate(num1, operator, num2);
+      display.textContent = result;
+      num1 = result;
+    } else {
+      num1 = Number(display.textContent);
+    }
     operator = button.textContent;
     shouldReset = true;
   });
