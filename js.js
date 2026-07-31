@@ -4,13 +4,14 @@ const clear = document.querySelector(".clear");
 const selectOperator = document.querySelectorAll(".operator");
 const del = document.querySelector(".delete");
 const enter = document.querySelector("#enter");
-
+const decimal = document.querySelector("#btn-decimal");
 let num1;
 let num2;
 let operator;
 let lastOperator;
 let lastNum2;
 let shouldReset = true;
+let hasDecimal = false;
 
 const add = function (a, b) {
   return a + b;
@@ -54,6 +55,7 @@ const clearCalculator = function () {
   lastOperator = undefined;
   lastNum2 = undefined;
   shouldReset = true;
+  hasDecimal = false;
 };
 
 numbers.forEach((button) => {
@@ -61,6 +63,7 @@ numbers.forEach((button) => {
     if (shouldReset) {
       display.textContent = button.textContent;
       shouldReset = false;
+      hasDecimal = false;
     } else {
       display.textContent += button.textContent;
     }
@@ -70,6 +73,19 @@ numbers.forEach((button) => {
 clear.addEventListener("click", () => {
   clearCalculator();
   display.textContent = "0";
+});
+
+del.addEventListener("click", () => {
+  display.textContent = display.textContent.slice(0, -1) || "0";
+});
+
+decimal.addEventListener("click", () => {
+  if (hasDecimal) {
+    return;
+  } else {
+    display.textContent += decimal.textContent;
+    hasDecimal = true;
+  }
 });
 
 selectOperator.forEach((button) => {

@@ -1,5 +1,5 @@
 .calculator {
-  display: flex; 
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -16,9 +16,13 @@
 .number {
   width: 50px;
   height: 50px;
-
 }
+#btn-decimal {
+  width: 50px;
+  height: 50px;
+}
+
 #btn-0 {
-  width:100px;
+  width: 100px;
   height: 50px;
 }
