@@ -65,6 +65,8 @@ numbers.forEach((button) => {
       display.textContent = button.textContent;
       shouldReset = false;
       hasDecimal = false;
+    } else if (display.textContent === "0" && button.textContent !== ".") {
+      display.textContent = button.textContent;
     } else {
       display.textContent += button.textContent;
     }
@@ -79,6 +81,7 @@ clear.addEventListener("click", () => {
 del.addEventListener("click", () => {
   display.textContent = display.textContent.slice(0, -1) || "0";
 });
+//need to update state when decimal is deleted
 
 decimal.addEventListener("click", () => {
   if (hasDecimal) {
@@ -107,7 +110,7 @@ selectOperator.forEach((button) => {
     shouldReset = true;
   });
 });
-
+//if 0 is pressed as then first number it is cleared for the first non zero number
 enter.addEventListener("click", () => {
   if (operator !== undefined) {
     num2 = Number(display.textContent);
