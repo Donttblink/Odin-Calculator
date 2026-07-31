@@ -5,6 +5,7 @@ const selectOperator = document.querySelectorAll(".operator");
 const del = document.querySelector(".delete");
 const enter = document.querySelector("#enter");
 const decimal = document.querySelector("#btn-decimal");
+
 let num1;
 let num2;
 let operator;
@@ -129,4 +130,35 @@ enter.addEventListener("click", () => {
   num1 = result;
   operator = undefined;
   shouldReset = true;
+});
+
+const keyMap = {
+  "0": "#btn-0",
+  "1": "#btn-1",
+  "2": "#btn-2",
+  "3": "#btn-3",
+  "4": "#btn-4",
+  "5": "#btn-5",
+  "6": "#btn-6",
+  "7": "#btn-7",
+  "8": "#btn-8",
+  "9": "#btn-9",
+  ".": "#btn-decimal",
+  "+": "#add",
+  "-": "#subtract",
+  "*": "#multiply",
+  "/": "#divide",
+  "^": "#power",
+  "Enter": "#enter",
+  "=": "#enter",
+  "Backspace": ".delete",
+  "Escape": ".clear",
+};
+
+document.addEventListener("keydown", (e) => {
+  const selector = keyMap[e.key];
+  if (selector) {
+    e.preventDefault();
+    document.querySelector(selector).click();
+  }
 });
