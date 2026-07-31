@@ -5,12 +5,12 @@ const selectOperator = document.querySelectorAll(".operator");
 const del = document.querySelector(".delete");
 const enter = document.querySelector("#enter");
 
-let currentInput = "";
 let num1;
 let num2;
 let operator;
+let lastOperator;
+let lastNum2;
 let shouldReset = true;
-let hasOperator = false;
 
 const add = function (a, b) {
   return a + b;
@@ -29,7 +29,6 @@ const power = function (a, b) {
 };
 
 const operate = function (num1, operator, num2) {
-  let answer;
   if (operator === "+") return add(num1, num2);
   if (operator === "-") return subtract(num1, num2);
   if (operator === "*") return multiply(num1, num2);
@@ -38,6 +37,23 @@ const operate = function (num1, operator, num2) {
     return divide(num1, num2);
   }
   if (operator === "^") return power(num1, num2);
+};
+
+function showResult(value) {
+  if (typeof value === "string") {
+    display.textContent = value;
+  } else {
+    display.textContent = Math.round(value * 1000000) / 1000000;
+  }
+}
+
+const clearCalculator = function () {
+  num1 = undefined;
+  num2 = undefined;
+  operator = undefined;
+  lastOperator = undefined;
+  lastNum2 = undefined;
+  shouldReset = true;
 };
 
 numbers.forEach((button) => {
@@ -52,11 +68,8 @@ numbers.forEach((button) => {
 });
 
 clear.addEventListener("click", () => {
+  clearCalculator();
   display.textContent = "0";
-  num1 = undefined;
-  num2 = undefined;
-  operator = undefined;
-  shouldReset = true;
 });
 
 selectOperator.forEach((button) => {
@@ -64,9 +77,13 @@ selectOperator.forEach((button) => {
     if (operator !== undefined && !shouldReset) {
       num2 = Number(display.textContent);
       const result = operate(num1, operator, num2);
-      display.textContent = result;
+      showResult(result);
+      if (typeof result === "string") {
+        clearCalculator();
+        return;
+      }
       num1 = result;
-    } else {
+    } else if (!shouldReset) {
       num1 = Number(display.textContent);
     }
     operator = button.textContent;
@@ -75,9 +92,25 @@ selectOperator.forEach((button) => {
 });
 
 enter.addEventListener("click", () => {
-  num2 = Number(display.textContent);
+  if (operator !== undefined) {
+    num2 = Number(display.textContent);
+    lastOperator = operator;
+    lastNum2 = num2;
+  } else if (lastOperator !== undefined) {
+    num2 = lastNum2;
+    operator = lastOperator;
+  } else {
+    return;
+  }
+
   const result = operate(num1, operator, num2);
-  display.textContent = result;
+  showResult(result);
+  if (typeof result === "string") {
+    clearCalculator();
+    return;
+  }
+
   num1 = result;
+  operator = undefined;
   shouldReset = true;
 });
