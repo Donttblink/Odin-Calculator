@@ -6,6 +6,7 @@
 }
 .display {
   height: 20px;
+  border: grey, solid, 2px;
 }
 .numpad-buttons {
   display: flex;
