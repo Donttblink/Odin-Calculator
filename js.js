@@ -12,7 +12,6 @@ let operator;
 let lastOperator;
 let lastNum2;
 let shouldReset = true;
-let hasDecimal = false;
 
 const add = function (a, b) {
   return a + b;
@@ -56,7 +55,6 @@ const clearCalculator = function () {
   lastOperator = undefined;
   lastNum2 = undefined;
   shouldReset = true;
-  hasDecimal = false;
 };
 
 numbers.forEach((button) => {
@@ -64,7 +62,6 @@ numbers.forEach((button) => {
     if (shouldReset) {
       display.textContent = button.textContent;
       shouldReset = false;
-      hasDecimal = false;
     } else if (display.textContent === "0" && button.textContent !== ".") {
       display.textContent = button.textContent;
     } else {
@@ -81,14 +78,12 @@ clear.addEventListener("click", () => {
 del.addEventListener("click", () => {
   display.textContent = display.textContent.slice(0, -1) || "0";
 });
-//need to update state when decimal is deleted
 
 decimal.addEventListener("click", () => {
-  if (hasDecimal) {
+  if (display.textContent.includes(".")) {
     return;
   } else {
     display.textContent += decimal.textContent;
-    hasDecimal = true;
   }
 });
 
@@ -110,7 +105,7 @@ selectOperator.forEach((button) => {
     shouldReset = true;
   });
 });
-//if 0 is pressed as then first number it is cleared for the first non zero number
+
 enter.addEventListener("click", () => {
   if (operator !== undefined) {
     num2 = Number(display.textContent);
