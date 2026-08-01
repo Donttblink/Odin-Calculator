@@ -1,10 +1,20 @@
-.calculator {
-  margin: 0;
-  display: flex;
-  width: fit-content;
+* {
+  box-sizing:border-box;
+}
+
+body {
+  display:flex;
   justify-content: center;
   align-items: center;
+  min-height: 60vh;
+  margin: 0px;
+}
+.calculator {
+  display: flex;
+  padding: 20px;
   flex-direction: column;
+  border-top-left-radius: 20%;
+  border-bottom-right-radius: 20%;
   border: red solid 2px;
 }
 .display {
@@ -12,10 +22,28 @@
   align-self:flex-start;
   height: 20px;
   border: grey, solid, 2px;
+  width: 150px;
 }
-.control-buttons {
+.buttons {
   display:flex;
 }
+
+.control-buttons {
+  display:flex;
+  width: 150px;
+}
+
+.control-buttons button {
+  flex: 1;
+}
+.operator-buttons {
+  display: flex;
+  width: 150px;
+}
+.operator-buttons button {
+flex: 1;
+}
+
 .numpad-buttons {
   display: flex;
   flex-wrap: wrap;
