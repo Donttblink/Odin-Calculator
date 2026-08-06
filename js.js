@@ -157,6 +157,10 @@ document.addEventListener("keydown", (e) => {
   const selector = keyMap[e.key];
   if (selector) {
     e.preventDefault();
-    document.querySelector(selector).click();
+    const button = document.querySelector(selector);
+    button.click();
+    
+    button.classList.add("pressed");
+    setTimeout(() => button.classList.remove("pressed"), 100);
   }
 });
