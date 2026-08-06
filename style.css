@@ -37,7 +37,7 @@ body {
   padding: 20px;
   flex-direction: column;
   border-top-left-radius: 20%;
-  border-bottom-right-radius: 20%;
+  border-bottom-right-radius: 8cap;
   border: #E6E6FA solid 2px;
   background-color: #C3B1E1;
 }
@@ -108,7 +108,7 @@ body {
 
 #enter {
   flex: 3;
-  border-bottom-right-radius: 20cap;
+  border-bottom-right-radius: 5cap;
   background-color: #FDFD96;
 }
 #btn-8,
