@@ -1,64 +1,129 @@
 * {
-  box-sizing:border-box;
+  box-sizing: border-box;
+}
+button:hover {
+  filter: brightness(1.15);
+  transform: scale(1.05);
+}
+button:active {
+  filter: brightness(0.9);
+  transform: scale(0.96);;
+}
+button {
+  border: #C3B1E1 solid 1px;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0px;
+  font-size: 20px;
 }
 
 body {
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 60vh;
+  min-height: 80vh;
   margin: 0px;
 }
+
 .calculator {
   display: flex;
+  width: 344px;
   padding: 20px;
   flex-direction: column;
   border-top-left-radius: 20%;
   border-bottom-right-radius: 20%;
-  border: red solid 2px;
+  border: #E6E6FA solid 2px;
+  background-color: #C3B1E1;
 }
+
 .display {
-  display:flex;
-  align-self:flex-start;
-  height: 20px;
-  border: grey, solid, 2px;
-  width: 150px;
+  width: 100%;
+  height: 60px;
+  border: #C3B1E1 solid 1px;
+  border-top-left-radius: 20cap;
+  text-align: right;
+  font-size: 24px;
+  padding: 10px;
+  background-color: #f8f8f8;
+  color: rgb(19, 23, 233);
+  justify-content: flex-end;
+
+
 }
+
 .buttons {
-  display:flex;
+  display: flex;
+  align-items: stretch;
 }
 
 .control-buttons {
-  display:flex;
-  width: 150px;
+  display: flex;
+  width: 100%;
 }
 
 .control-buttons button {
   flex: 1;
+  height: 40px;
 }
-.operator-buttons {
+
+.right-column {
   display: flex;
-  width: 150px;
-}
-.operator-buttons button {
-flex: 1;
+  flex-direction: column;
+  width: 90px;
 }
 
 .numpad-buttons {
   display: flex;
   flex-wrap: wrap;
-  width: 150px;
+  width: 100%;
+  
 }
+
 .number {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
 }
+
+.right-column button {
+  flex:1;
+  width: 90px;
+  background-color: #AEC6CF;
+}
+
 #btn-decimal {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
 }
 
 #btn-0 {
-  width: 100px;
-  height: 50px;
+  width: 140px;
+  height: 70px;
+}
+
+#enter {
+  flex: 3;
+  border-bottom-right-radius: 20cap;
+  background-color: #FDFD96;
+}
+#btn-8,
+#btn-4,
+#btn-2,
+#btn-6 {
+  background-color: #FFB347;
+}
+#btn-1,
+#btn-3,
+#btn-7,
+#btn-9 {
+  background-color: #FFD1DC;
+}
+#btn-5,
+#btn-0 {
+  background-color: #A7C7E7;
+}
+
+#btn-decimal,
+.clear,
+.delete {
+  background-color: #98ef98;
 }
